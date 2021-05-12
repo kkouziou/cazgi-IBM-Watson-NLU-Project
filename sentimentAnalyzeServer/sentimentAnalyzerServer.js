@@ -74,7 +74,7 @@ app.get("/url/sentiment", (req,res) => {
         .then(analysisResults => {
             sentiment = analysisResults.result.sentiment.document
             console.log(sentiment);
-            return res.send(sentiment);
+            return res.send(JSON.stringify(sentiment.label, null, 2));
         })
         .catch(err => {
             console.log('error:', err);
@@ -123,8 +123,8 @@ app.get("/text/sentiment", (req,res) => {
     nlu.analyze(analyzeParams)
         .then(analysisResults => {
             sentiment = analysisResults.result.sentiment.document
-            console.log(sentiment);
-            return res.send(sentiment);
+            console.log(JSON.stringify(sentiment.label, null, 2));
+            return res.send(JSON.stringify(sentiment.label, null, 2));
         })
         .catch(err => {
             console.log('error:', err);
